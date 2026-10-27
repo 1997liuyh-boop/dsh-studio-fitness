@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "name": "dsh-studio-fitness",
+  "version": "0.1.0",
+  "kind": "studio",
+  "packages": [
+    {
+      "id": "fitness",
+      "path": "studios/fitness"
+    }
+  ]
+}
