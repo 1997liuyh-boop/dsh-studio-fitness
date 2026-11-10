@@ -1,0 +1,14 @@
+{
+  "name": "dsh-studio-fitness",
+  "version": "0.2.0",
+  "description": "基础版：记录训练、运动时长与训练容量",
+  "entry": {
+    "name": "dsh-studio-fitness",
+    "inject": [
+      "studioProjects"
+    ]
+  },
+  "client": {
+    "platform": "web"
+  }
+}

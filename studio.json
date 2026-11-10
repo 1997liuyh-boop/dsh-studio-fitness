@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "fitness",
+  "name": "健身记录",
+  "icon": "🏋️",
+  "description": "基础版：记录训练、运动时长与训练容量",
+  "order": 13,
+  "entry": "/studio-projects/fitness",
+  "capabilities": [],
+  "compatibility": {
+    "host": "0.2.1-rc.2",
+    "runtime": "^0.5.0",
+    "worktable": "^0.6.0"
+  }
+}
