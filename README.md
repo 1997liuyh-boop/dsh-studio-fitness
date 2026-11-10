@@ -1,23 +1,37 @@
-# 健身记录工作室
+# dsh-studio-fitness
 
-独立的基础健身工作室，用于记录训练计划、运动时长和训练容量。它不依赖外部健身服务，也不会安装其他工作室。
+[简体中文](README.zh.md)
 
-## 功能
+## Repository
 
-- 创建训练记录并填写训练日期、项目、组数、次数、重量或时长。
-- 查看单次训练、周/月累计运动时长和训练容量。
-- 按训练项目和日期筛选历史记录，补充备注和完成状态。
-- 在 DSH 会话中查询当前记录、生成训练总结或规划下一次训练；结果只写入当前工作室数据。
-- 提供本地数据导入、导出和清理入口，便于迁移或备份。
+- Repository name: `dsh-studio-fitness`
+- Repository description: Local fitness log studio for workout plans, duration, sets, repetitions, weight and training volume.
+- Source: `https://github.com/1997liuyh-boop/dsh-studio-fitness`
 
-## 安装与构建
+## Features
 
-先安装 [工作室容器与共享运行时](https://github.com/1997liuyh-boop/dsh-studio-library)，再通过 dsh 插件管理器添加本仓库。需要 Node.js 22 及 npm，运行 `npm install --include=dev --legacy-peer-deps`、`npm run build`、`npm run check`。
+- Create and edit dated workout records with exercises, sets, repetitions, weight, duration and notes.
+- Filter history by exercise or date and view workout count, total duration and training volume.
+- Ask the current DSH session for summaries or the next workout plan; data stays in this studio.
+- Import, export and clear local JSON data for backup and migration.
+- Store records in the isolated studio data directory without installing external fitness services.
 
-## 数据与限制
+## Installation
 
-训练记录保存在当前 DSH 工作室目录，卸载插件不会自动删除。当前版本不连接可穿戴设备、不提供医疗建议，也不替用户判断训练风险；数据同步和提醒需要用户自行处理。来源与许可见 `UPSTREAM.json`。
+Install the control bundle, then this exact studio tag through the official Desktop plugin manager after fully quitting Desktop:
 
-## 更新已安装插件
+```powershell
+& "<Desktop install directory>\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add "github:1997liuyh-boop/dsh-studio-library#v0.1.3"
+& "<Desktop install directory>\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add "github:1997liuyh-boop/dsh-studio-fitness#v0.2.1"
+& "<Desktop install directory>\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop list
+```
 
-GitHub 代码提交不会自动更新 Desktop profile 中已经锁定的安装版本。请通过插件管理器重新安装本仓库来源；旧共享组合库的用户请先按[控制层迁移步骤](https://github.com/1997liuyh-boop/dsh-studio-library#更新与旧组合库迁移)保留现有子工作室，再移除旧组合库。工作室内升级需要已发布的适配安装包。
+Verify `main: lib/index.js`, `exports./client: lib/client.js`, `dsh.bundle.patch: ./cordis.patch.yml` and the built `static` entry in the installed package. Restart Desktop and open “Fitness studio”.
+
+## Requirements and limits
+
+Source builds require Node.js 22 and npm. Records remain local and are not synced to wearable devices. The studio does not provide medical advice or assess training risk. Export JSON before clearing DSH data. Upstream and license details are in `UPSTREAM.json`.
+
+## License and sources
+
+MIT licensed. Upstream attribution and the locked source revision are recorded in `UPSTREAM.json`.
