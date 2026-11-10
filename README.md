@@ -1,16 +1,23 @@
-# dsh-studio-fitness
+# 健身记录工作室
 
-基础版：记录训练、运动时长与训练容量
+独立的基础健身工作室，用于记录训练计划、运动时长和训练容量。它不依赖外部健身服务，也不会安装其他工作室。
 
-本仓库根目录是可安装的 DSH 插件，版本 0.2.0。在插件市场添加本仓库 Git URL，安装后启用。先安装并启用 [工作室容器与共享运行时](https://github.com/1997liuyh-boop/dsh-studio-library)，再启用本插件。
+## 功能
 
-Git 安装使用已提交的 lib/ 与静态资源。开发时执行 npm install --include=dev --legacy-peer-deps、npm run build、npm run check；构建只使用本仓库源码与公开依赖，不引用相邻工作库。
+- 创建训练记录并填写训练日期、项目、组数、次数、重量或时长。
+- 查看单次训练、周/月累计运动时长和训练容量。
+- 按训练项目和日期筛选历史记录，补充备注和完成状态。
+- 在 DSH 会话中查询当前记录、生成训练总结或规划下一次训练；结果只写入当前工作室数据。
+- 提供本地数据导入、导出和清理入口，便于迁移或备份。
 
-## 功能与上游说明
+## 安装与构建
 
+先安装 [工作室容器与共享运行时](https://github.com/1997liuyh-boop/dsh-studio-library)，再通过 dsh 插件管理器添加本仓库。需要 Node.js 22 及 npm，运行 `npm install --include=dev --legacy-peer-deps`、`npm run build`、`npm run check`。
 
-基础版：记录训练、运动时长与训练容量。本插件有独立的页面源码、宿主注册、构建与发布版本。
+## 数据与限制
 
-从库根目录构建：`node scripts/build.mjs fitness`。依赖 dsh-worktable ^0.6.0 与 dsh-studio-projects ^0.5.0。
+训练记录保存在当前 DSH 工作室目录，卸载插件不会自动删除。当前版本不连接可穿戴设备、不提供医疗建议，也不替用户判断训练风险；数据同步和提醒需要用户自行处理。来源与许可见 `UPSTREAM.json`。
 
-来源及锁定提交见 [UPSTREAM.json](UPSTREAM.json)。
+## 更新已安装插件
+
+GitHub 代码提交不会自动更新 Desktop profile 中已经锁定的安装版本。请通过插件管理器重新安装本仓库来源；旧共享组合库的用户请先按[控制层迁移步骤](https://github.com/1997liuyh-boop/dsh-studio-library#更新与旧组合库迁移)保留现有子工作室，再移除旧组合库。工作室内升级需要已发布的适配安装包。
